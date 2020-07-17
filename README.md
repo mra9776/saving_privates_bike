@@ -1,13 +1,13 @@
 # Saving Private's Bike
 
-Or the considarations behind implementing a job scheduler.
+Or the considerations behind implementing a job scheduler.
 
 ## Introduction
 
 The Problem definition stated as follows:
 Due an increase in report of stolen bikes, we need to have a service which assign open cases to available officers. After closing each case, officer should be ready to accept next case. We also need a report revealing statics of implemented API.
 
-Providing an API for a GUI app is your job. You dont need to worry about front-end side.
+Providing an API for a GUI app is your job. You don't need to worry about front-end side.
 
 ## Analyzing
 
@@ -23,13 +23,13 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
 
    cons and pros
 
-3. Scability
+3. Scalability
 
    Horizontal, Vertical
 
 4. Race Conditions and Dead_locks
 
-   Considering nature of a web service and the way each request is going to process also taking horizontal scability into considiration Race Conditions are inevitable.
+   Considering nature of a web service and the way each request is going to process also taking horizontal Scalability into consideration Race Conditions are inevitable.
    Therefore we must figure out a mitigation for this issue.
    And the usual solution for it would be using dead locks, which block access to a specific row by two thread simultaneously.
 
@@ -65,19 +65,22 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
 
    - Discussion
 
-     In order to design a databse we have to apply normalization rules. For this case applying till the third level seams enough.
+     In order to design a database we have to apply normalization rules. For this case applying till the third level seams enough.
 
      One the consideration during Designing DB is to try it design on a way that to decrease amount of logical read.
 
-     In order to achieve that we're going to decrease amount of data we read during bonding an officer and a case together, so by spliting each table (Cases, Officers) into necessary data and extra data.
+     In order to achieve that we're going to decrease amount of data we read during bonding an officer and a case together, so by splitting each table (Cases, Officers) into necessary data and extra data.
 
 6. Why Spring?
 
    Microservices, Spring boot, ...
 
-7. Designing API (swagger)
+7. Designing API
 
-   see proper page.
+   [ GET    ]	/cases/									|	Get all cases
+   [ GET    ]	/cases/state=[PENDING|WORKING|DONE]		|	Get all cases 
+   [ POST   ]	/cases/									| 	Add new case
+   [ DELETE ]	/cases/{case_id}						|	Delete case
 
 8. Connecting to Database
 
