@@ -43,11 +43,11 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
       | case_id   | case_status  | officer|
       | ---       | ---          | ---    |
 
-   - Officers_data(Optional)
+   - Officers_data( Optional)
       | officer_id   | name |
       | ---          | ---  |
 
-   - Cases_data(Optional)
+   - Cases_data( Optional)
       | case_id   | desc   | date_added   | national_id  |
       | ---       | ---    | ---          | ---          |
 
@@ -83,18 +83,28 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
    GET    | /cases/{case_id}                       | Get Description on case
    DELETE | /cases/{case_id}                       | Delete case
    POST   | /cases/                                | Add new case
-   GET	  | /officers/							   | Get all officers
-   GET	  | /officers/?state=[FREE|BUSY]		   | Get all officers filtering by
-   GET	  | /officers/{officers_id}				   | Get Officer details
-   DELETE | /officers/{officers_id}				   | Delete Officer
-   PATCH  | /officers/{officers_id}				   | Officer's Job Done
-   
+   GET    | /officers/                             | Get all officers
+   GET    | /officers/?state=[FREE|BUSY]           | Get all officers filtering by
+   GET    | /officers/{officers_id}                | Get Officer details
+   DELETE | /officers/{officers_id}                | Delete Officer
+   PATCH  | /officers/{officers_id}                | Officer's Job Done
 
 8. Connecting to Database
-   
+
    In the study phase it was set to use MySql DB as the backend database, but for the sake of simpleness and delivering a MVP I used H2.
    Although It was quite simple to use SQL in order to talk to the database (personally), I chose to use Spring Data JPA. It is remarkably more simple but needs to spare time to fully get understood it.
-    
-9. How to test service?
 
-   gotta trust on the hooman.
+9. Avoiding number Ids
+
+   In order to achieve this requirement we can use do a hash of salt + number_id. We also need to implement HATOES.
+
+10. This project's Issues
+
+    - Due to lack of time, Validations didn't implemented.
+    - Exceptions has'nt handled properly.
+    - Race Conditions and locking mechanism haven't driven yet.
+    - In the beginning cases will not assigned to idle officers.
+
+11. How to test service?
+
+    404 Not Found

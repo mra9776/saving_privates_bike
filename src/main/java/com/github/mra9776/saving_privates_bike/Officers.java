@@ -19,7 +19,7 @@ public class Officers {
 	
 	OfficerStatus officerStatus;
 	
-	Date last_case;
+	Date lastCase;
 	
 	public Officers() {
 		super();
@@ -30,12 +30,12 @@ public class Officers {
 		super();
 		this.officer_id = officer_id;
 		this.officerStatus = officer_status;
-		this.last_case = last_case;
+		this.lastCase = last_case;
 		this.case_id = case_id;
 	}
 	@Override
 	public String toString() {
-		return "Officers [officer_id=" + officer_id + ", officer_status=" + officerStatus + ", last_case=" + last_case
+		return "Officers [officer_id=" + officer_id + ", officer_status=" + officerStatus + ", last_case=" + lastCase
 				+ ", case_id=" + case_id + "]";
 	}
 	public Integer getOfficer_id() {
@@ -51,10 +51,10 @@ public class Officers {
 		this.officerStatus = officer_status;
 	}
 	public Date getLast_case() {
-		return last_case;
+		return lastCase;
 	}
 	public void setLast_case(Date last_case) {
-		this.last_case = last_case;
+		this.lastCase = last_case;
 	}
 	public Integer getCase_id() {
 		return case_id;

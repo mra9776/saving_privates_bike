@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OfficersRepository extends JpaRepository<Officers, Integer>{
 	List <Officers> findByOfficerStatus(OfficerStatus officerStatus);
+	List <Officers> findByOfficerStatusOrderByLastCase(OfficerStatus officerStatus);
+	
 }
