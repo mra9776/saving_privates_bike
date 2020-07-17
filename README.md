@@ -13,27 +13,46 @@ Providing an API for a GUI app is your job. You dont need to worry about front-e
 
 The nature of this task is to implement a job scheduler. A job scheduler is a service which assign pending jobs to available job consumers. There are some aspects which needs to consider:
 
-1. **Choosing a Database or Message Queue**
+1. Choosing a Database or Message Queue
+   
    database cons and pros
-
    it's not 2003 anymore
    a need to archiving results.
 
-2. **In-memory Database vs relational database**
+2. In-memory Database vs relational database
+
    cons and pros
 
-3. **Scability**
+3. Scability
+
    Horizontal, Vertical
 
-4. **Race Conditions and Dead_locks**
+4. Race Conditions and Dead_locks
+
    Considering nature of a web service and the way each request is going to process also taking horizontal scability into considiration Race Conditions are inevitable.
    Therefore we must figure out a mitigation for this issue.
    And the usual solution for it would be using dead locks, which block access to a specific row by two thread simultaneously.
 
-5. **Desiging Database**
+5. Desiging Database
 
-6. **Why Spring?**
+   - Officer
+    officer_id   | officer_status   | last_case   | case_id 
+    ---          | ---              | ---         | ---     
 
-7. **Desiging API (swagger)**
+   - Cases
+   | case_id   | case_status  | officer   |
+   | ---       | ---          | ---       |
 
-8. **How to test service?**
+   - Officer_data(Optional)
+   | officer_id   | name |
+   | ---          | ---  |
+
+   - Case_data(Optional)
+   | case_id   | desc   | date_added   | nationalId   |
+   | ---       | ---    | ---          | ---          |
+
+6. Why Spring?
+
+7. Desiging API (swagger)
+
+8. How to test service?
