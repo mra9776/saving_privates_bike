@@ -33,23 +33,23 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
    Therefore we must figure out a mitigation for this issue.
    And the usual solution for it would be using dead locks, which block access to a specific row by two thread simultaneously.
 
-5. Desiging Database
+5. Designing Database
 
    - Officers
-      officer_id   | officer_status   | last_case   | case_id
-      ---          | ---              | ---         | ---
+      | officer_id   | officer_status   | last_case   | case_id|
+      | ---          | ---              | ---         | ---    |
 
    - Cases
-      case_id   | case_status  | officer
-      ---       | ---          | ---
+      | case_id   | case_status  | officer|
+      | ---       | ---          | ---    |
 
    - Officers_data(Optional)
-      officer_id   | name
-      ---          | ---  
+      | officer_id   | name |
+      | ---          | ---  |
 
    - Cases_data(Optional)
-      case_id   | desc   | date_added   | national_id
-      ---       | ---    | ---          | ---
+      | case_id   | desc   | date_added   | national_id  |
+      | ---       | ---    | ---          | ---          |
 
    - Enums
       | officer_status   |
@@ -67,12 +67,20 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
 
      In order to design a databse we have to apply normalization rules. For this case applying till the third level seams enough.
 
-     One the consideration during desiging DB is to try it design on a way that to decrease amount of logical read.
+     One the consideration during Designing DB is to try it design on a way that to decrease amount of logical read.
 
      In order to achieve that we're going to decrease amount of data we read during bonding an officer and a case together, so by spliting each table (Cases, Officers) into necessary data and extra data.
 
 6. Why Spring?
 
-7. Desiging API (swagger)
+   Microservices, Spring boot, ...
 
-8. How to test service?
+7. Designing API (swagger)
+
+   see proper page.
+
+8. Connecting to Database
+
+9. How to test service?
+
+   gotta trust on the hooman.
