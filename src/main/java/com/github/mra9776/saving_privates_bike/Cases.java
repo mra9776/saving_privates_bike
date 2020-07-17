@@ -1,8 +1,13 @@
 package com.github.mra9776.saving_privates_bike;
 
+import java.util.UUID;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
 
 enum CaseStatus {
 	PENDING, 
@@ -14,8 +19,13 @@ enum CaseStatus {
 public class Cases {
 	
 	@Id
-	@GeneratedValue
-	Integer case_id;
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(
+		name = "UUID",
+		strategy = "org.hibernate.id.UUIDGenerator"
+	)
+	@Column(name = "id", updatable = false, nullable = false)
+	private UUID caseId;
 	
 	CaseStatus caseStatus;
 	
@@ -24,34 +34,36 @@ public class Cases {
 	public Cases() {
 		super();
 	}
-	public Cases(Integer case_id, CaseStatus case_status, Integer officer_id) {
-		super();
-		this.case_id = case_id;
-		this.caseStatus = case_status;
-		this.officer_id = officer_id;
+
+	public UUID getCaseId() {
+		return caseId;
 	}
-	@Override
-	public String toString() {
-		return "Cases [case_id=" + case_id + ", case_status=" + caseStatus + ", officer_id=" + officer_id + "]";
+
+	public void setCaseId(UUID caseId) {
+		this.caseId = caseId;
 	}
-	public Integer getCase_id() {
-		return case_id;
-	}
-	public void setCase_id(Integer case_id) {
-		this.case_id = case_id;
-	}
-	public CaseStatus getCase_status() {
+
+	public CaseStatus getCaseStatus() {
 		return caseStatus;
 	}
-	public void setCase_status(CaseStatus case_status) {
-		this.caseStatus = case_status;
+
+	public void setCaseStatus(CaseStatus caseStatus) {
+		this.caseStatus = caseStatus;
 	}
+
 	public Integer getOfficer_id() {
 		return officer_id;
 	}
+
 	public void setOfficer_id(Integer officer_id) {
 		this.officer_id = officer_id;
 	}
-	
+
+	public Cases(UUID caseId, CaseStatus caseStatus, Integer officer_id) {
+		super();
+		this.caseId = caseId;
+		this.caseStatus = caseStatus;
+		this.officer_id = officer_id;
+	}
 	
 }

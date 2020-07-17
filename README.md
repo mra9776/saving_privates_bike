@@ -96,7 +96,7 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
 
 9. Avoiding number Ids
 
-   In order to achieve this requirement we can use do a hash of salt + number_id. We also need to implement HATOES.
+   In order to achieve this requirement we're going to use Internal hibernate UUID. This item makes sure each value is random and unique.
 
 10. This project's Issues
 

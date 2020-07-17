@@ -2,6 +2,7 @@ package com.github.mra9776.saving_privates_bike;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,8 +20,8 @@ public class CaseResource {
 	private CasesRepository caseRepository;
 
 	@GetMapping("/cases/{case_id}")
-	public Cases retrieveCasesById(@PathVariable Integer case_id){
-		 Optional<Cases> findByIdResult = caseRepository.findById( case_id);
+	public Cases retrieveCasesById(@PathVariable UUID case_id){
+		 Optional<Cases> findByIdResult = caseRepository.findByCaseId( case_id);
 		 if (findByIdResult.isEmpty()) {
 			 throw new CaseNotFoundException("id - " + case_id);
 		 }
@@ -51,8 +52,8 @@ public class CaseResource {
 	}
 	
 	@DeleteMapping("/cases/{case_id}")
-	public void deleteCases(@PathVariable Integer case_id){
-		caseRepository.deleteById(case_id);
+	public void deleteCases(@PathVariable UUID case_id){
+		caseRepository.deleteByCaseId(case_id);
 		
 	}
 }

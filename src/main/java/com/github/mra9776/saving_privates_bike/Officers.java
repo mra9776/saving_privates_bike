@@ -1,6 +1,7 @@
 package com.github.mra9776.saving_privates_bike;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,9 +25,9 @@ public class Officers {
 	public Officers() {
 		super();
 	}
-	Integer case_id;
+	UUID case_id;
 	
-	public Officers(Integer officer_id, OfficerStatus officer_status, Date last_case, Integer case_id) {
+	public Officers(Integer officer_id, OfficerStatus officer_status, Date last_case, UUID case_id) {
 		super();
 		this.officer_id = officer_id;
 		this.officerStatus = officer_status;
@@ -56,11 +57,11 @@ public class Officers {
 	public void setLast_case(Date last_case) {
 		this.lastCase = last_case;
 	}
-	public Integer getCase_id() {
+	public UUID getCase_id() {
 		return case_id;
 	}
-	public void setCase_id(Integer case_id) {
-		this.case_id = case_id;
+	public void setCase_id(UUID uuid) {
+		this.case_id = uuid;
 	}
 	
 }

@@ -34,9 +34,9 @@ public class Matcher {
 				officer.setOfficer_status(OfficerStatus.BUSY);
 				// assign job to officer
 				Cases cases = availableCases.get(0);
-				officer.setCase_id(cases.getCase_id());
+				officer.setCase_id(cases.getCaseId());
 				cases.setOfficer_id(officer.getOfficer_id());
-				cases.setCase_status(CaseStatus.WORKING);
+				cases.setCaseStatus(CaseStatus.WORKING);
 			}
 		}
 	}

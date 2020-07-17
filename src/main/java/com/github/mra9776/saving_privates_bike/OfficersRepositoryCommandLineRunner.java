@@ -14,9 +14,8 @@ public class OfficersRepositoryCommandLineRunner implements CommandLineRunner{
 	
 	@Override
 	public void run(String... arg0)  {
-		officersRepository.save(new Officers(0,  OfficerStatus.FREE, new Date(), -1));
-		officersRepository.save(new Officers(0,  OfficerStatus.FREE, new Date(), -1));
-		officersRepository.save(new Officers(0,  OfficerStatus.FREE, new Date(), -1));
-	
+		officersRepository.save(new Officers(0,  OfficerStatus.FREE, new Date(), null));
+		officersRepository.save(new Officers(0,  OfficerStatus.FREE, new Date(), null));
+		officersRepository.save(new Officers(0,  OfficerStatus.FREE, new Date(), null));
 	}
 }

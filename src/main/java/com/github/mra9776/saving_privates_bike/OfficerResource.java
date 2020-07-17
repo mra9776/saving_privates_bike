@@ -58,11 +58,11 @@ public class OfficerResource {
 		officerRepository.save(officers);
 		
 		// set case status as done;
-		Optional<Cases> findByIdCaseResult = casesRepository.findById(officers.getCase_id());
+		Optional<Cases> findByIdCaseResult = casesRepository.findByCaseId(officers.getCase_id());
 		if (findByIdCaseResult.isEmpty())
 			throw new CaseNotFoundException("Id = " + officers.getCase_id());
 		Cases cases = findByIdCaseResult.get();
-		cases.setCase_status(CaseStatus.DONE);
+		cases.setCaseStatus(CaseStatus.DONE);
 		casesRepository.save(cases);
 		
 		// assign next one;

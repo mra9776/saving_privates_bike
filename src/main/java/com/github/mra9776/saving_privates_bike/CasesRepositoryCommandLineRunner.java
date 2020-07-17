@@ -12,11 +12,16 @@ public class CasesRepositoryCommandLineRunner implements CommandLineRunner{
 	
 	@Override
 	public void run(String... arg0)  {
-		Cases case1 = new Cases(1, CaseStatus.PENDING, 0);
+		Cases case1 = new Cases();
+		case1.setCaseStatus(CaseStatus.PENDING);
 		casesRepository.save(case1);
-		Cases case2 = new Cases(2, CaseStatus.PENDING, 0);
+		
+		Cases case2 = new Cases();
+		case2.setCaseStatus(CaseStatus.PENDING);
 		casesRepository.save(case2);
-		Cases case3 = new Cases(3, CaseStatus.PENDING, 0);
+		
+		Cases case3 = new Cases();
+		case3.setCaseStatus(CaseStatus.PENDING);
 		casesRepository.save(case3);
 		
 	}
