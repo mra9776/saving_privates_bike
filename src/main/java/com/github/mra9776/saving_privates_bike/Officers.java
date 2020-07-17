@@ -2,27 +2,40 @@ package com.github.mra9776.saving_privates_bike;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 enum OfficerStatus{
 	BUSY, 
 	FREE
 }
+
+@Entity
 public class Officers {
+	@Id
+	@GeneratedValue
 	Integer officer_id;
-	OfficerStatus officer_status;
-	Date last_case;
-	Integer case_id;
 	
+	OfficerStatus officerStatus;
+	
+	Date last_case;
+	
+	public Officers() {
+		super();
+	}
+	Integer case_id;
 	
 	public Officers(Integer officer_id, OfficerStatus officer_status, Date last_case, Integer case_id) {
 		super();
 		this.officer_id = officer_id;
-		this.officer_status = officer_status;
+		this.officerStatus = officer_status;
 		this.last_case = last_case;
 		this.case_id = case_id;
 	}
 	@Override
 	public String toString() {
-		return "Officers [officer_id=" + officer_id + ", officer_status=" + officer_status + ", last_case=" + last_case
+		return "Officers [officer_id=" + officer_id + ", officer_status=" + officerStatus + ", last_case=" + last_case
 				+ ", case_id=" + case_id + "]";
 	}
 	public Integer getOfficer_id() {
@@ -32,10 +45,10 @@ public class Officers {
 		this.officer_id = officer_id;
 	}
 	public OfficerStatus getOfficer_status() {
-		return officer_status;
+		return officerStatus;
 	}
 	public void setOfficer_status(OfficerStatus officer_status) {
-		this.officer_status = officer_status;
+		this.officerStatus = officer_status;
 	}
 	public Date getLast_case() {
 		return last_case;

@@ -20,6 +20,7 @@ public class Cases {
 	CaseStatus caseStatus;
 	
 	Integer officer_id;
+	
 	public Cases() {
 		super();
 	}

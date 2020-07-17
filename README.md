@@ -76,14 +76,25 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
    Microservices, Spring boot, ...
 
 7. Designing API
-
-   [ GET    ]	/cases/									|	Get all cases
-   [ GET    ]	/cases/state=[PENDING|WORKING|DONE]		|	Get all cases 
-   [ POST   ]	/cases/									| 	Add new case
-   [ DELETE ]	/cases/{case_id}						|	Delete case
+   Verb   | URI                                    |  Description
+   ---    | ---                                    | ---
+   GET    | /cases/                                | Get all cases
+   GET    | /cases/?state=[PENDING|WORKING|DONE]   | Get all cases filtering by
+   GET    | /cases/{case_id}                       | Get Description on case
+   DELETE | /cases/{case_id}                       | Delete case
+   POST   | /cases/                                | Add new case
+   GET	  | /officers/							   | Get all officers
+   GET	  | /officers/?state=[FREE|BUSY]		   | Get all officers filtering by
+   GET	  | /officers/{officers_id}				   | Get Officer details
+   DELETE | /officers/{officers_id}				   | Delete Officer
+   PATCH  | /officers/{officers_id}				   | Officer's Job Done
+   
 
 8. Connecting to Database
-
+   
+   In the study phase it was set to use MySql DB as the backend database, but for the sake of simpleness and delivering a MVP I used H2.
+   Although It was quite simple to use SQL in order to talk to the database (personally), I chose to use Spring Data JPA. It is remarkably more simple but needs to spare time to fully get understood it.
+    
 9. How to test service?
 
    gotta trust on the hooman.
