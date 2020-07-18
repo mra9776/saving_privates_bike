@@ -108,6 +108,14 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
     - Race Conditions and locking mechanism haven't driven yet.
     - When program starts Idle officers stays Idle.
 
-11. How to test service?
+11. Docker!
+
+    1. $ ./mvnw package
+    2. $ docker build -t mra9776/dockerBike .
+    3. $ docker docker run -p8080:8080 mra9776/dockerBike
+
+    In case of any difficulty check Docker documentations.
+
+12. How to test service?
 
     404 Not Found
