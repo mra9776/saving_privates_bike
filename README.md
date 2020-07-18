@@ -15,19 +15,17 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
 
 1. Choosing a Database or Message Queue
 
-   database cons and pros
-   
-   it's not 2003 anymore
-   
-   a need to archiving results.
+   Modern databases can easily handle up to 1000 Request Per Second and higher without any problem. Indexing and searching will not be an issue for modern databases.
+
+   Because of nature of out problem we alse need to keep a record of our cases.
 
 2. In-memory Database vs relational database
 
-   cons and pros
+   In-memory Database are fast but unfortunatly are vulnerable to loss of power, any technical problem lead to lose our data. In contrast relational databases store date on HDD so we're no longer worry about lose of data.
 
 3. Scalability
 
-   Horizontal, Vertical
+   During design of this scheduler I should consider horizental scability. This service must design in a way that could be easily clusterized. Making concurency problem more obvious. And 
 
 4. Race Conditions and Dead_locks
 
@@ -80,7 +78,7 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
 7. Designing API
 
    Also Swagger-ui is available at "http://localhost:8080/swagger-ui.html"
-   
+
    Verb   | URI                                    |  Description
    ---    | ---                                    | ---
    GET    | /cases/                                | Get all cases
@@ -101,7 +99,7 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
 
 9. Avoiding number Ids
 
-   In order to achieve this requirement we're going to use Internal hibernate UUID. This item makes sure each value is random and unique.
+   In order to achieve this requirement we're going to use Internal Hibernate's UUID. This item makes sure each value is random and unique.
 
 10. This project's Issues
 
