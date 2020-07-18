@@ -1,5 +1,6 @@
 package com.github.mra9776.saving_privates_bike;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,13 +35,15 @@ public class Matcher {
 				// reserve officer
 				Officers officer = availableOfficers.get(0);
 				officer.setOfficerStatus(OfficerStatus.BUSY);
-				officersRepository.save(officer);
+				officer.setLastCase(new Date());
 				
 				// assign job to officer
 				Cases cases = availableCases.get(0);
 				officer.setCase_id(cases.getCaseId());
 				cases.setOfficer_id(officer.getOfficerId());
 				cases.setCaseStatus(CaseStatus.WORKING);
+				
+				officersRepository.save(officer);
 				casesRepository.save(cases);
 				
 				// Let's make Other Officers busy.

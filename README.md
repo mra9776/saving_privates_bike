@@ -78,15 +78,18 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
    Microservices, Spring boot, ...
 
 7. Designing API
+
+   Also Swagger-ui is available at "http://localhost:8080/swagger-ui.html"
+   
    Verb   | URI                                    |  Description
    ---    | ---                                    | ---
    GET    | /cases/                                | Get all cases
-   GET    | /cases/?state=[PENDING|WORKING|DONE]   | Get all cases filtering by
+   GET    | /cases/?state=[PENDING/WORKING/DONE]   | Get all cases filtering by
    GET    | /cases/{case_id}                       | Get Description on case
    DELETE | /cases/{case_id}                       | Delete case
    POST   | /cases/                                | Add new case
    GET    | /officers/                             | Get all officers
-   GET    | /officers/?state=[FREE|BUSY]           | Get all officers filtering by
+   GET    | /officers/?state=[FREE/BUSY]           | Get all officers filtering by
    GET    | /officers/{officers_id}                | Get Officer details
    DELETE | /officers/{officers_id}                | Delete Officer
    PATCH  | /officers/{officers_id}                | Officer's Job Done
@@ -105,7 +108,7 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
     - Due to lack of time, Validations didn't implemented.
     - Exceptions has'nt handled properly.
     - Race Conditions and locking mechanism haven't driven yet.
-    - In the beginning cases will not assigned to idle officers.
+    - When program starts Idle officers stays Idle.
 
 11. How to test service?
 

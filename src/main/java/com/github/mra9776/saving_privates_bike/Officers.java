@@ -10,12 +10,15 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import io.swagger.annotations.ApiModel;
+
 enum OfficerStatus{
 	BUSY, 
 	FREE
 }
 
 @Entity
+@ApiModel("Officers Table, Keep the state of Officers")
 public class Officers {
 
 	@Id
