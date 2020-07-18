@@ -44,7 +44,7 @@ public class CaseResource {
 	public Cases createCases(@RequestBody Cases cases){
 		// TODO: validation
 		
-		cases.setOfficer_id(-1);
+		cases.setOfficer_id(null);
 		Cases saved = caseRepository.save(cases);
 		//throw new RuntimeException();
 		return saved;

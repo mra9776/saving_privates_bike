@@ -29,7 +29,7 @@ public class Cases {
 	
 	CaseStatus caseStatus;
 	
-	Integer officer_id;
+	UUID officer_id;
 	
 	public Cases() {
 		super();
@@ -51,15 +51,15 @@ public class Cases {
 		this.caseStatus = caseStatus;
 	}
 
-	public Integer getOfficer_id() {
+	public UUID getOfficer_id() {
 		return officer_id;
 	}
 
-	public void setOfficer_id(Integer officer_id) {
-		this.officer_id = officer_id;
+	public void setOfficer_id(UUID uuid) {
+		this.officer_id = uuid;
 	}
 
-	public Cases(UUID caseId, CaseStatus caseStatus, Integer officer_id) {
+	public Cases(UUID caseId, CaseStatus caseStatus, UUID officer_id) {
 		super();
 		this.caseId = caseId;
 		this.caseStatus = caseStatus;

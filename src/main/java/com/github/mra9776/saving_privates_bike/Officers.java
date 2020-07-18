@@ -3,9 +3,12 @@ package com.github.mra9776.saving_privates_bike;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
 
 enum OfficerStatus{
 	BUSY, 
@@ -14,9 +17,15 @@ enum OfficerStatus{
 
 @Entity
 public class Officers {
+
 	@Id
-	@GeneratedValue
-	Integer officer_id;
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(
+		name = "UUID",
+		strategy = "org.hibernate.id.UUIDGenerator"
+	)
+	@Column(name = "id", updatable = false, nullable = false)
+	private UUID officerId;
 	
 	OfficerStatus officerStatus;
 	
@@ -26,42 +35,43 @@ public class Officers {
 		super();
 	}
 	UUID case_id;
-	
-	public Officers(Integer officer_id, OfficerStatus officer_status, Date last_case, UUID case_id) {
-		super();
-		this.officer_id = officer_id;
-		this.officerStatus = officer_status;
-		this.lastCase = last_case;
-		this.case_id = case_id;
+
+	public UUID getOfficerId() {
+		return officerId;
 	}
-	@Override
-	public String toString() {
-		return "Officers [officer_id=" + officer_id + ", officer_status=" + officerStatus + ", last_case=" + lastCase
-				+ ", case_id=" + case_id + "]";
+	public void setOfficerId(UUID officerId) {
+		this.officerId = officerId;
 	}
-	public Integer getOfficer_id() {
-		return officer_id;
-	}
-	public void setOfficer_id(Integer officer_id) {
-		this.officer_id = officer_id;
-	}
-	public OfficerStatus getOfficer_status() {
+	public OfficerStatus getOfficerStatus() {
 		return officerStatus;
 	}
-	public void setOfficer_status(OfficerStatus officer_status) {
-		this.officerStatus = officer_status;
+	public void setOfficerStatus(OfficerStatus officerStatus) {
+		this.officerStatus = officerStatus;
 	}
-	public Date getLast_case() {
+	public Date getLastCase() {
 		return lastCase;
 	}
-	public void setLast_case(Date last_case) {
-		this.lastCase = last_case;
+	public void setLastCase(Date lastCase) {
+		this.lastCase = lastCase;
 	}
 	public UUID getCase_id() {
 		return case_id;
 	}
-	public void setCase_id(UUID uuid) {
-		this.case_id = uuid;
+	public void setCase_id(UUID case_id) {
+		this.case_id = case_id;
 	}
+	@Override
+	public String toString() {
+		return "Officers [officerId=" + officerId + ", officerStatus=" + officerStatus + ", lastCase=" + lastCase
+				+ ", case_id=" + case_id + "]";
+	}
+	public Officers(UUID officerId, OfficerStatus officerStatus, Date lastCase, UUID case_id) {
+		super();
+		this.officerId = officerId;
+		this.officerStatus = officerStatus;
+		this.lastCase = lastCase;
+		this.case_id = case_id;
+	}
+	
 	
 }

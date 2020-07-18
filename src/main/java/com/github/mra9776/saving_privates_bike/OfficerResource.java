@@ -2,6 +2,7 @@ package com.github.mra9776.saving_privates_bike;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,8 +24,8 @@ public class OfficerResource {
 	private Matcher matcher;
 	
 	@GetMapping("/officers/{officer_id}")
-	public Officers retrieveOfficers(@PathVariable Integer officer_id){
-		Optional<Officers> findByIdResult = officerRepository.findById(officer_id);
+	public Officers retrieveOfficers(@PathVariable UUID officer_id){
+		Optional<Officers> findByIdResult = officerRepository.findByOfficerId(officer_id);
 		if (findByIdResult.isEmpty())
 			throw new OfficerNotFoundException("officer_id = " + officer_id);
 		return findByIdResult.get();
@@ -41,30 +42,31 @@ public class OfficerResource {
 	}
 	
 	@DeleteMapping("/officers/{officer_id}")
-	public void deleteOfficers(@PathVariable Integer officer_id) {
+	public void deleteOfficers(@PathVariable UUID officer_id) {
 		//TODO: NOT FOUND EXCEPTION 
-		officerRepository.deleteById(officer_id);
+		officerRepository.deleteByOfficerId(officer_id);
 	}
 	
 	@PatchMapping("/officers/{officer_id}")
-	public Officers jobDoneOfficers(@PathVariable Integer officer_id) {
+	public Officers jobDoneOfficers(@PathVariable UUID officer_id) {
 		// Find that worker;
-		Optional<Officers> findByIdResult = officerRepository.findById(officer_id);
+		Optional<Officers> findByIdResult = officerRepository.findByOfficerId(officer_id);
 		if (findByIdResult.isEmpty())
 			throw new OfficerNotFoundException("Id = " + officer_id);
 		Officers officers= findByIdResult.get();
 		// let the bird fly;
-		officers.setOfficer_status(OfficerStatus.FREE);
+		officers.setOfficerStatus(OfficerStatus.FREE);
 		officerRepository.save(officers);
 		
-		// set case status as done;
-		Optional<Cases> findByIdCaseResult = casesRepository.findByCaseId(officers.getCase_id());
-		if (findByIdCaseResult.isEmpty())
-			throw new CaseNotFoundException("Id = " + officers.getCase_id());
-		Cases cases = findByIdCaseResult.get();
-		cases.setCaseStatus(CaseStatus.DONE);
-		casesRepository.save(cases);
-		
+		if (officers.getCase_id()!=null) {
+			// set case status as done;
+			Optional<Cases> findByIdCaseResult = casesRepository.findByCaseId(officers.getCase_id());
+			if (findByIdCaseResult.isEmpty())
+				throw new CaseNotFoundException("Id = " + officers.getCase_id());
+			Cases cases = findByIdCaseResult.get();
+			cases.setCaseStatus(CaseStatus.DONE);
+			casesRepository.save(cases);
+		}
 		// assign next one;
 		matcher.assign();
 		

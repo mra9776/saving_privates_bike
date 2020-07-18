@@ -26,17 +26,22 @@ public class Matcher {
 		// check if job available
 		List <Cases> availableCases = casesRepository.findByCaseStatus(CaseStatus.PENDING);
 		if (availableCases.size() > 0) {
+			
 			// check if officer available
 			List <Officers> availableOfficers = officersRepository.findByOfficerStatusOrderByLastCase(OfficerStatus.FREE);
 			if (availableOfficers.size() > 0) {
+				
 				// reserve officer
 				Officers officer = availableOfficers.get(0);
-				officer.setOfficer_status(OfficerStatus.BUSY);
+				officer.setOfficerStatus(OfficerStatus.BUSY);
+				officersRepository.save(officer);
+				
 				// assign job to officer
 				Cases cases = availableCases.get(0);
 				officer.setCase_id(cases.getCaseId());
-				cases.setOfficer_id(officer.getOfficer_id());
+				cases.setOfficer_id(officer.getOfficerId());
 				cases.setCaseStatus(CaseStatus.WORKING);
+				casesRepository.save(cases);
 			}
 		}
 	}
