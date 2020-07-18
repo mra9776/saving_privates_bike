@@ -22,7 +22,7 @@ public class CaseResource {
 	@GetMapping("/cases/{case_id}")
 	public Cases retrieveCasesById(@PathVariable UUID case_id){
 		 Optional<Cases> findByIdResult = caseRepository.findByCaseId( case_id);
-		 if (findByIdResult.isEmpty()) {
+		 if (!findByIdResult.isPresent()) {
 			 throw new CaseNotFoundException("id - " + case_id);
 		 }
 		 
@@ -33,7 +33,7 @@ public class CaseResource {
 	public List<Cases> retrieveCasesFiltered(@RequestParam  Optional<CaseStatus> state){
 		// TODO: Catching transformation Exception.
 		
-		if(state.isEmpty()) {
+		if(!state.isPresent()) {
 			return caseRepository.findAll();
 		} else {
 			return caseRepository.findByCaseStatus(state.get());

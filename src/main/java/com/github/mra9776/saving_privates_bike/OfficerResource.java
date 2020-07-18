@@ -26,7 +26,7 @@ public class OfficerResource {
 	@GetMapping("/officers/{officer_id}")
 	public Officers retrieveOfficers(@PathVariable UUID officer_id){
 		Optional<Officers> findByIdResult = officerRepository.findByOfficerId(officer_id);
-		if (findByIdResult.isEmpty())
+		if (!findByIdResult.isPresent())
 			throw new OfficerNotFoundException("officer_id = " + officer_id);
 		return findByIdResult.get();
 	}
@@ -34,7 +34,7 @@ public class OfficerResource {
 	@GetMapping("/officers/")
 	public List<Officers> retrieveOfficers(@RequestParam() Optional<OfficerStatus> state ){
 		//TODO: handle exception and validation.
-		if (state.isEmpty()) {
+		if (!state.isPresent()) {
 			return officerRepository.findAll();
 		} else {
 			return officerRepository.findByOfficerStatus(state.get());
@@ -51,7 +51,7 @@ public class OfficerResource {
 	public Officers jobDoneOfficers(@PathVariable UUID officer_id) {
 		// Find that worker;
 		Optional<Officers> findByIdResult = officerRepository.findByOfficerId(officer_id);
-		if (findByIdResult.isEmpty())
+		if (!findByIdResult.isPresent())
 			throw new OfficerNotFoundException("Id = " + officer_id);
 		Officers officers= findByIdResult.get();
 		// let the bird fly;
@@ -61,7 +61,7 @@ public class OfficerResource {
 		if (officers.getCase_id()!=null) {
 			// set case status as done;
 			Optional<Cases> findByIdCaseResult = casesRepository.findByCaseId(officers.getCase_id());
-			if (findByIdCaseResult.isEmpty())
+			if (!findByIdCaseResult.isPresent())
 				throw new CaseNotFoundException("Id = " + officers.getCase_id());
 			Cases cases = findByIdCaseResult.get();
 			cases.setCaseStatus(CaseStatus.DONE);
