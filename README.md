@@ -16,7 +16,9 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
 1. Choosing a Database or Message Queue
 
    database cons and pros
+   
    it's not 2003 anymore
+   
    a need to archiving results.
 
 2. In-memory Database vs relational database
