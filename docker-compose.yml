@@ -1,0 +1,13 @@
+version: '2'
+services: 
+    main:
+        container_name: main
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: mra9776/d1
+        expose: 
+            - 8080
+        logging: 
+            driver: json-file
+    
