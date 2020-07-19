@@ -1,11 +1,11 @@
 version: '2'
 services: 
-    main:
-        container_name: main
+    mra9776_c1:
+        container_name: mra9776_c1
         build:
             context: .
             dockerfile: Dockerfile
-        image: mra9776/d1
+        image: mra9776/dockerBike
         expose: 
             - 8080
         logging: 
