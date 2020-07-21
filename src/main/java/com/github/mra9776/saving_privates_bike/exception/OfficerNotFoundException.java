@@ -1,16 +1,16 @@
-package com.github.mra9776.saving_privates_bike;
+package com.github.mra9776.saving_privates_bike.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class CaseNotFoundException extends RuntimeException{
+public class OfficerNotFoundException extends RuntimeException{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CaseNotFoundException(String message) {
+	public OfficerNotFoundException(String message) {
 		super(message);
 	}
 }

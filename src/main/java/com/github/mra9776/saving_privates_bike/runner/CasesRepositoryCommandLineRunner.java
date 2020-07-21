@@ -1,17 +1,21 @@
-package com.github.mra9776.saving_privates_bike;
+package com.github.mra9776.saving_privates_bike.runner;
+
+import com.github.mra9776.saving_privates_bike.data.Cases;
+import com.github.mra9776.saving_privates_bike.data.helper.CaseStatus;
+import com.github.mra9776.saving_privates_bike.repository.CasesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CasesRepositoryCommandLineRunner implements CommandLineRunner{
+public class CasesRepositoryCommandLineRunner implements CommandLineRunner {
 
 	@Autowired
 	private CasesRepository casesRepository;
-	
+
 	@Override
-	public void run(String... arg0)  {
+	public void run(String... arg0) {
 		Cases case1 = new Cases();
 		case1.setCaseStatus(CaseStatus.PENDING);
 		casesRepository.save(case1);

@@ -1,4 +1,4 @@
-package com.github.mra9776.saving_privates_bike;
+package com.github.mra9776.saving_privates_bike.data;
 
 import java.util.Date;
 import java.util.UUID;
@@ -8,14 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.github.mra9776.saving_privates_bike.data.helper.OfficerStatus;
+
 import org.hibernate.annotations.GenericGenerator;
 
 import io.swagger.annotations.ApiModel;
 
-enum OfficerStatus{
-	BUSY, 
-	FREE
-}
+
 
 @Entity
 @ApiModel("Officers Table, Keep the state of Officers")

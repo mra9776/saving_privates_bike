@@ -1,4 +1,4 @@
-package com.github.mra9776.saving_privates_bike;
+package com.github.mra9776.saving_privates_bike.data;
 
 import java.util.UUID;
 
@@ -7,13 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.github.mra9776.saving_privates_bike.data.helper.CaseStatus;
+
 import org.hibernate.annotations.GenericGenerator;
 
-enum CaseStatus {
-	PENDING, 
-	WORKING, 
-	DONE
-}
 
 @Entity
 public class Cases {

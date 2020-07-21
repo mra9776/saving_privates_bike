@@ -3,6 +3,13 @@ package com.github.mra9776.saving_privates_bike;
 import java.util.Date;
 import java.util.List;
 
+import com.github.mra9776.saving_privates_bike.data.Cases;
+import com.github.mra9776.saving_privates_bike.data.Officers;
+import com.github.mra9776.saving_privates_bike.data.helper.CaseStatus;
+import com.github.mra9776.saving_privates_bike.data.helper.OfficerStatus;
+import com.github.mra9776.saving_privates_bike.repository.CasesRepository;
+import com.github.mra9776.saving_privates_bike.repository.OfficersRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
