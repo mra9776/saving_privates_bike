@@ -110,9 +110,9 @@ The nature of this task is to implement a job scheduler. A job scheduler is a se
 
 11. Docker!
 
-    1. $ ./mvnw package
-    2. $ docker build -t mra9776/dockerBike .
-    3. $ docker docker run -p8080:8080 mra9776/dockerBike
+    $ ./docker-run.sh
+
+    Runs docker-compose, and exposes internal port to the world.
 
     In case of any difficulty check Docker documentations.
 
