@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 public class Matcher {
 	@Autowired
 	OfficersRepository officersRepository;
+	
 	@Autowired
 	CasesRepository casesRepository;
 	
@@ -46,8 +47,8 @@ public class Matcher {
 				
 				// assign job to officer
 				Cases cases = availableCases.get(0);
-				officer.setCase_id(cases.getCaseId());
-				cases.setOfficer_id(officer.getOfficerId());
+				officer.setCaseId(cases.getCaseId());
+				cases.setOfficerId(officer.getOfficerId());
 				cases.setCaseStatus(CaseStatus.WORKING);
 				
 				officersRepository.save(officer);

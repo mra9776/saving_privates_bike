@@ -21,7 +21,7 @@ public class OfficersRepositoryCommandLineRunner implements CommandLineRunner{
 		for (int i=0; i < 3 ; i++) {
 			Officers officers = new Officers();
 			officers.setOfficerStatus(OfficerStatus.FREE);
-			officers.setCase_id(null);
+			officers.setCaseId(null);
 			officers.setLastCase(new Date());
 			officersRepository.save(officers);
 		

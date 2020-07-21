@@ -68,11 +68,11 @@ public class OfficerResource {
 		officers.setOfficerStatus(OfficerStatus.FREE);
 		officerRepository.save(officers);
 		
-		if (officers.getCase_id()!=null) {
+		if (officers.getCaseId()!=null) {
 			// set case status as done;
-			Optional<Cases> findByIdCaseResult = casesRepository.findByCaseId(officers.getCase_id());
+			Optional<Cases> findByIdCaseResult = casesRepository.findByCaseId(officers.getCaseId());
 			if (!findByIdCaseResult.isPresent())
-				throw new CaseNotFoundException("Id = " + officers.getCase_id());
+				throw new CaseNotFoundException("Id = " + officers.getCaseId());
 			Cases cases = findByIdCaseResult.get();
 			cases.setCaseStatus(CaseStatus.DONE);
 			casesRepository.save(cases);

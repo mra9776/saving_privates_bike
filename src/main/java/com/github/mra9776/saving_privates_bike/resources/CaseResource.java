@@ -3,12 +3,10 @@ package com.github.mra9776.saving_privates_bike.resources;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
 import com.github.mra9776.saving_privates_bike.data.Cases;
 import com.github.mra9776.saving_privates_bike.data.helper.CaseStatus;
 import com.github.mra9776.saving_privates_bike.exception.CaseNotFoundException;
 import com.github.mra9776.saving_privates_bike.repository.CasesRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,7 +47,7 @@ public class CaseResource {
 	public Cases createCases(@RequestBody Cases cases){
 		// TODO: validation
 		
-		cases.setOfficer_id(null);
+		cases.setOfficerId(null);
 		Cases saved = caseRepository.save(cases);
 		//throw new RuntimeException();
 		return saved;
