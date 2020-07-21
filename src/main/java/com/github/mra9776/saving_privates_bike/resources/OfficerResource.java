@@ -5,10 +5,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 import com.github.mra9776.saving_privates_bike.Matcher;
-import com.github.mra9776.saving_privates_bike.data.Cases;
-import com.github.mra9776.saving_privates_bike.data.Officers;
-import com.github.mra9776.saving_privates_bike.data.helper.CaseStatus;
-import com.github.mra9776.saving_privates_bike.data.helper.OfficerStatus;
+import com.github.mra9776.saving_privates_bike.model.Cases;
+import com.github.mra9776.saving_privates_bike.model.Officers;
+import com.github.mra9776.saving_privates_bike.model.helper.CaseStatus;
+import com.github.mra9776.saving_privates_bike.model.helper.OfficerStatus;
 import com.github.mra9776.saving_privates_bike.exception.CaseNotFoundException;
 import com.github.mra9776.saving_privates_bike.exception.OfficerNotFoundException;
 import com.github.mra9776.saving_privates_bike.repository.CasesRepository;

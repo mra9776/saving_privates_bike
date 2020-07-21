@@ -1,7 +1,7 @@
 package com.github.mra9776.saving_privates_bike.runner;
 
-import com.github.mra9776.saving_privates_bike.data.Cases;
-import com.github.mra9776.saving_privates_bike.data.helper.CaseStatus;
+import com.github.mra9776.saving_privates_bike.model.Cases;
+import com.github.mra9776.saving_privates_bike.model.helper.CaseStatus;
 import com.github.mra9776.saving_privates_bike.repository.CasesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;

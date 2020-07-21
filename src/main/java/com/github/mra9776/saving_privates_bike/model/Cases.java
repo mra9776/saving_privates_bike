@@ -1,11 +1,13 @@
-package com.github.mra9776.saving_privates_bike.data;
+package com.github.mra9776.saving_privates_bike.model;
 
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import com.github.mra9776.saving_privates_bike.data.helper.CaseStatus;
+
+import com.github.mra9776.saving_privates_bike.model.helper.CaseStatus;
+
 import org.hibernate.annotations.GenericGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
