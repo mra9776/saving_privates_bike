@@ -7,8 +7,8 @@ import com.github.mra9776.saving_privates_bike.model.Cases;
 import com.github.mra9776.saving_privates_bike.model.Officers;
 import com.github.mra9776.saving_privates_bike.model.helper.CaseStatus;
 import com.github.mra9776.saving_privates_bike.model.helper.OfficerStatus;
-import com.github.mra9776.saving_privates_bike.repository.CasesRepository;
 import com.github.mra9776.saving_privates_bike.repository.OfficersRepository;
+import com.github.mra9776.saving_privates_bike.service.CasesService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,21 +19,14 @@ public class Matcher {
 	OfficersRepository officersRepository;
 	
 	@Autowired
-	CasesRepository casesRepository;
-	
-	public Matcher(OfficersRepository officersRepository, CasesRepository casesRepository) {
-		super();
-		this.officersRepository = officersRepository;
-		this.casesRepository = casesRepository;
-		assign();
-	}
+	CasesService casesService;
 
 	public void assign() {
 		// TODO: Do some Atomic, Locky thing
 		// TODO: JUST LOCK ONE ROW NOT ANY MORE
 		
 		// check if job available
-		List <Cases> availableCases = casesRepository.findByCaseStatus(CaseStatus.PENDING);
+		List <Cases> availableCases = casesService.findByCaseStatus(CaseStatus.PENDING);
 		if (availableCases.size() > 0) {
 			
 			// check if officer available
@@ -52,7 +45,7 @@ public class Matcher {
 				cases.setCaseStatus(CaseStatus.WORKING);
 				
 				officersRepository.save(officer);
-				casesRepository.save(cases);
+				casesService.save(cases);
 				
 				// Let's make Other Officers busy.
 				// but there's a problem 

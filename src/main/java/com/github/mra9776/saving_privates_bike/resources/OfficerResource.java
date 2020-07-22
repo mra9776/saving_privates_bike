@@ -11,8 +11,8 @@ import com.github.mra9776.saving_privates_bike.model.helper.CaseStatus;
 import com.github.mra9776.saving_privates_bike.model.helper.OfficerStatus;
 import com.github.mra9776.saving_privates_bike.exception.CaseNotFoundException;
 import com.github.mra9776.saving_privates_bike.exception.OfficerNotFoundException;
-import com.github.mra9776.saving_privates_bike.repository.CasesRepository;
 import com.github.mra9776.saving_privates_bike.repository.OfficersRepository;
+import com.github.mra9776.saving_privates_bike.service.CasesService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,7 +28,7 @@ public class OfficerResource {
 	@Autowired
 	OfficersRepository officerRepository;
 	@Autowired
-	CasesRepository casesRepository;
+	CasesService casesService;
 	
 	@Autowired
 	private Matcher matcher;
@@ -70,12 +70,12 @@ public class OfficerResource {
 		
 		if (officers.getCaseId()!=null) {
 			// set case status as done;
-			Optional<Cases> findByIdCaseResult = casesRepository.findByCaseId(officers.getCaseId());
+			Optional<Cases> findByIdCaseResult = casesService.findByCaseId(officers.getCaseId());
 			if (!findByIdCaseResult.isPresent())
 				throw new CaseNotFoundException("Id = " + officers.getCaseId());
 			Cases cases = findByIdCaseResult.get();
 			cases.setCaseStatus(CaseStatus.DONE);
-			casesRepository.save(cases);
+			casesService.save(cases);
 		}
 		// assign next one;
 		matcher.assign();

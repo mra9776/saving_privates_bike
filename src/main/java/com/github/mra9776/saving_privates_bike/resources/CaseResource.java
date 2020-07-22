@@ -6,7 +6,7 @@ import java.util.UUID;
 import com.github.mra9776.saving_privates_bike.model.Cases;
 import com.github.mra9776.saving_privates_bike.model.helper.CaseStatus;
 import com.github.mra9776.saving_privates_bike.exception.CaseNotFoundException;
-import com.github.mra9776.saving_privates_bike.repository.CasesRepository;
+import com.github.mra9776.saving_privates_bike.service.CasesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,11 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class CaseResource {
 	
 	@Autowired
-	private CasesRepository caseRepository;
+	private CasesService casesService;
 
 	@GetMapping("/cases/{case_id}")
 	public Cases retrieveCasesById(@PathVariable UUID case_id){
-		 Optional<Cases> findByIdResult = caseRepository.findByCaseId( case_id);
+		 Optional<Cases> findByIdResult = casesService.findByCaseId( case_id);
 		 if (!findByIdResult.isPresent()) {
 			 throw new CaseNotFoundException("id - " + case_id);
 		 }
@@ -37,9 +37,9 @@ public class CaseResource {
 		// TODO: Catching transformation Exception.
 		
 		if(!state.isPresent()) {
-			return caseRepository.findAll();
+			return casesService.findAll();
 		} else {
-			return caseRepository.findByCaseStatus(state.get());
+			return casesService.findByCaseStatus(state.get());
 		}
 	}
 	
@@ -48,7 +48,7 @@ public class CaseResource {
 		// TODO: validation
 		
 		cases.setOfficerId(null);
-		Cases saved = caseRepository.save(cases);
+		Cases saved = casesService.save(cases);
 		//throw new RuntimeException();
 		return saved;
 		
@@ -56,7 +56,7 @@ public class CaseResource {
 	
 	@DeleteMapping("/cases/{case_id}")
 	public void deleteCases(@PathVariable UUID case_id){
-		caseRepository.deleteByCaseId(case_id);
+		casesService.deleteByCaseId(case_id);
 		
 	}
 }
