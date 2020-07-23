@@ -1,7 +1,6 @@
 package com.github.mra9776.saving_privates_bike.model;
 
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -13,6 +12,7 @@ import com.github.mra9776.saving_privates_bike.model.helper.CaseStatus;
 
 import org.hibernate.annotations.GenericGenerator;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,6 +20,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Cases {
 	
 	@Id

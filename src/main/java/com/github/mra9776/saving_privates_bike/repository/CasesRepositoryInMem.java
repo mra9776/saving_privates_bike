@@ -8,7 +8,12 @@ import redis.clients.jedis.Jedis;
 
 @Repository
 public class CasesRepositoryInMem  {
-    Jedis jedis;
+	private Jedis jedis;
+
+	public CasesRepositoryInMem(Jedis jedis) {
+		super();
+		this.jedis = jedis;
+	}
     
     public CasesRepositoryInMem(){
         jedis = new Jedis("localhost", 6379);
