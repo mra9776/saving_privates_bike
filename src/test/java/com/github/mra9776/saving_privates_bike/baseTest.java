@@ -1,6 +1,5 @@
 package com.github.mra9776.saving_privates_bike;
 
-import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 

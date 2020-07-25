@@ -10,14 +10,16 @@ import com.github.mra9776.saving_privates_bike.repository.CasesRepositoryInMem;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-@Repository
+@Service
 public class CasesService {
 	@Autowired
 	CasesRepository casesRepository;
 
 	@Autowired
 	CasesRepositoryInMem casesRepositoryInMem;
+	
 	public List <Cases> findByCaseStatus(CaseStatus caseStatus){
 		return casesRepository.findByCaseStatus(caseStatus);
 	}

@@ -33,7 +33,6 @@ public class CasesRepositoryTest {
 			assertEquals(found.get(), cases);
 		} else {
 			fail();
-		}
-		
+		}	
 	}
 }
